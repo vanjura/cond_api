@@ -35,7 +35,8 @@ if($num>0){
             "senha" => $senha,
             "email" => $email,
             "is_adm" => $is_adm,
-            "avatar" => $avatar
+            "avatar" => $avatar,
+            "id_condominio" => $id_condominio
         );
  
         array_push($arr, $item);

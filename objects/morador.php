@@ -12,6 +12,7 @@ class Morador{
     public $email;
     public $is_adm;
     public $avatar;
+    public $id_condominio;
 
     //construtor recebendo o banco
     public function __construct($db){
@@ -44,14 +45,16 @@ class Morador{
                 senha, 
                 email, 
                 is_adm, 
-                avatar
+                avatar,
+                id_condominio
             ) 
             VALUES (
                 :nome, 
                 :senha, 
                 :email, 
                 :is_adm, 
-                :avatar
+                :avatar,
+                :id_condominio
             )";
     
         //preparando a query
@@ -63,6 +66,7 @@ class Morador{
         $this->email=htmlspecialchars(strip_tags($this->email));
         $this->is_adm=htmlspecialchars(strip_tags($this->is_adm));
         $this->avatar=htmlspecialchars(strip_tags($this->avatar));
+        $this->id_condominio=htmlspecialchars(strip_tags($this->id_condominio));
     
         //Bind
         $stmt->bindParam(":nome", $this->nome);
@@ -70,6 +74,7 @@ class Morador{
         $stmt->bindParam(":email", $this->email);
         $stmt->bindParam(":is_adm", $this->is_adm);
         $stmt->bindParam(":avatar", $this->avatar);
+        $stmt->bindParam(":id_condominio", $this->id_condominio);
     
         //Executando
         if($stmt->execute()){
@@ -104,6 +109,7 @@ class Morador{
         $this->email = $row['email'];
         $this->is_adm = $row['is_adm'];
         $this->avatar = $row['avatar'];
+        $this->id_condominio = $row['id_condominio'];
     }
 
     //Update
@@ -117,7 +123,8 @@ class Morador{
                     senha = :senha,
                     email = :email,
                     is_adm = :is_adm,
-                    avatar = :avatar
+                    avatar = :avatar,
+                    id_condominio = :id_condominio
                 WHERE
                     id = :id";
     
@@ -131,6 +138,7 @@ class Morador{
         $this->email=htmlspecialchars(strip_tags($this->email));
         $this->is_adm=htmlspecialchars(strip_tags($this->is_adm));
         $this->avatar=htmlspecialchars(strip_tags($this->avatar));
+        $this->id_condominio=htmlspecialchars(strip_tags($this->id_condominio));
     
         // Bind
         $stmt->bindParam(':id', $this->id);
@@ -139,6 +147,7 @@ class Morador{
         $stmt->bindParam(':email', $this->email);
         $stmt->bindParam(':is_adm', $this->is_adm);
         $stmt->bindParam(':avatar', $this->avatar);
+        $stmt->bindParam(':id_condominio', $this->id_condominio);
 
         // Executando
         if($stmt->execute()){
@@ -178,7 +187,8 @@ class Morador{
         // SELECT
         $query = "SELECT * FROM " . $this->table_name . "
                 WHERE
-                    nome LIKE ? OR uf LIKE ?
+                    nome LIKE ? OR
+                    email LIKE ?
                 ORDER BY
                     nome DESC";
     

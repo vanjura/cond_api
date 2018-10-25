@@ -31,6 +31,7 @@ if($morador->nome!=null){
         "senha" => $morador->senha,
         "email" => $morador->email,
         "is_adm" => $morador->is_adm,
+        "id_condominio" => $morador->id_condominio,
         "avatar" => $morador->avatar
     );
  

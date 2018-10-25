@@ -22,7 +22,8 @@ $dados = json_decode(file_get_contents("php://input"));
 if(
     !empty($dados->nome) &&
     !empty($dados->senha) &&
-    !empty($dados->email)
+    !empty($dados->email) &&
+    !empty($dados->id_condominio)
 ){
     if(empty($dados->is_adm)){
         $dados->is_adm = 0;
@@ -36,6 +37,7 @@ if(
     $morador->email = $dados->email;
     $morador->is_adm = $dados->is_adm;
     $morador->avatar = $dados->avatar;
+    $morador->id_condominio = $dados->id_condominio;
  
     // Criando
     if($morador->create()){

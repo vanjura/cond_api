@@ -29,6 +29,7 @@ $morador->senha = $data->senha;
 $morador->email = $data->email;
 $morador->is_adm = $data->is_adm;
 $morador->avatar = $data->avatar;
+$morador->id_condominio = $data->id_condominio;
  
 // atualizando
 if($morador->update()){
